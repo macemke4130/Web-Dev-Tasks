@@ -1,0 +1,22 @@
+{
+  "name": "webdevtasks",
+  "version": "1.0.0",
+  "description": "Homework",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/macemke4130/Web-Dev-Tasks.git"
+  },
+  "author": "Lucas Mace",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/macemke4130/Web-Dev-Tasks/issues"
+  },
+  "homepage": "https://github.com/macemke4130/Web-Dev-Tasks#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
