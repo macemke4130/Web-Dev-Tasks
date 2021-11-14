@@ -1,6 +1,6 @@
 import express from 'express';
 
-var app = express();
+const app = express();
 app.use(express.json());
 
 app.use(express.static('./public'));

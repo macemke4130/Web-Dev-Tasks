@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/macemke4130/Web-Dev-Tasks#readme",
   "dependencies": {
+    "@tobynatooor/countdown": "^1.2.5",
     "express": "^4.17.1"
   },
   "type": "module"
