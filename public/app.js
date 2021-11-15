@@ -68,7 +68,7 @@ const imageGallery = [
         titlePosition: "BR",
         buttonPosiiton: "BR",
         buttonText: "Low Inventory"
-    },
+    }
 ];
 
 let sliderGateOpen = true;
