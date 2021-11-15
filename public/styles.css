@@ -134,7 +134,7 @@ h1 {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     column-gap: 0.5rem;
-    margin-top: 0.5rem;
+    margin-top: 0.2rem;
 }
 
 #tri-column div {
@@ -178,13 +178,12 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 0.5rem;
+    margin: 0.2em 0;
     color: white;
     background-image: url("https://eriksbikeshop.vtexassets.com/arquivos/footer.jpg");
     background-size: cover;
     background-position: bottom;
     background-color: #212121;
-    margin-bottom: 1rem;
 }
 
 #co2 > h2 {
@@ -208,6 +207,10 @@ h1 {
 #co2-button {
     margin: 0.5rem;
     padding: 0.5rem;
+    background-color: red;
+    color: white;
+    border: 1px solid black;
+    text-transform: uppercase;
 }
 
 #co2-outputs {
@@ -279,7 +282,7 @@ h1 {
     #tri-column div p {
         text-align: center;
         left: 50%;
-        top: unset;
+        top: auto;
         bottom: 3.5rem;
         transform: translate(-50%, -50%);
     }

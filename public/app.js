@@ -1,10 +1,11 @@
 console.log("Created by Lucas Mace");
 import { timeUntil } from './countdown.js';
 
+// Countdown output paragraph node --
 const cdNode = document.getElementById("countdown-output");
 
 const countdown = setInterval(() => {
-    const targetDateTime = timeUntil('2021-11-29T23:59:59');
+    const targetDateTime = timeUntil("2021-11-29T23:59:59");
 
     // targetDateTime.done is true when the Target DateTime has passed --
     if (targetDateTime.done) {
