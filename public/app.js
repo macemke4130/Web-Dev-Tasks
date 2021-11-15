@@ -24,39 +24,48 @@ const countdown = setInterval(() => {
     }
 }, 1000);
 
+// Building the Slider information into an array of objects --
+// makes it simple to scale. This can easily be pulled from --
+// a backend in either REST or GraphQL --
 const imageGallery = [ 
     {
         title: "Cycling Deals",
         src: "Cycling_Slider.jpg",
         link: "https://www.eriksbikeshop.com/cycling/bicycles",
         target: "_self",
-        titlePosition: "TR"
+        titlePosition: "TR",
+        buttonPosiiton: "TL"
     },
     {
         title: "Ski Deals",
         src: "Ski_Slider.jpg",
         link: "https://www.eriksbikeshop.com/winter/ski",
         target: "_self",
-        titlePosition: "BL"
+        titlePosition: "BL",
+        buttonPosiiton: "BL"
     },
     {
         title: "Snowboard Deals",
         src: "Snowboard_Slider.jpg",
         link: "https://www.eriksbikeshop.com/winter/snowboard",
         target: "_self",
-        titlePosition: "BR"
+        titlePosition: "BR",
+        buttonPosiiton: "BR",
+        buttonText: "Low Inventory"
     },
 ];
 
 const sliderImage = document.getElementById("slider-image");
 const sliderTitle = document.getElementById("slider-title");
 const sliderLink = document.getElementById("slider-link");
+const sliderButton = document.getElementById("slider-button");
 const sliderImagePrefix = "./images/";
 let sliderIndex = 0;
 
 const slider = () => {
     sliderImage.src = sliderImagePrefix + imageGallery[sliderIndex].src;
     sliderTitle.innerHTML = imageGallery[sliderIndex].title;
+    sliderLink.href = imageGallery[sliderIndex].link;
 
     switch (imageGallery[sliderIndex].titlePosition) {
         case "TR":
@@ -87,12 +96,48 @@ const slider = () => {
                 sliderTitle.style.left = "2rem";
                 
             break;
-    
+
         default:
             break;
     }
 
-    // sliderTitle.style.top = 
+    sliderButton.innerHTML = imageGallery[sliderIndex].buttonText || "Shop Now";
+
+    switch (imageGallery[sliderIndex].buttonPosiiton) {
+        case "TR":
+            sliderButton.style.top = "2rem";
+            sliderButton.style.right = "2rem";
+            sliderButton.style.bottom = "auto";
+            sliderButton.style.left = "auto";
+            
+            break;
+            case "TL":
+                sliderButton.style.top = "2rem";
+                sliderButton.style.right = "auto";
+                sliderButton.style.bottom = "auto";
+                sliderButton.style.left = "2rem";
+                
+            break;
+            case "BR":
+                sliderButton.style.top = "auto";
+                sliderButton.style.right = "2rem";
+                sliderButton.style.bottom = "3.5rem";
+                sliderButton.style.left = "auto";
+                
+            break;
+            case "BL":
+                sliderButton.style.top = "auto";
+                sliderButton.style.right = "auto";
+                sliderButton.style.bottom = "3.5rem";
+                sliderButton.style.left = "2rem";
+                
+            break;
+
+        default:
+            break;
+    }
+
+    
 
     if (sliderIndex === imageGallery.length - 1) {
         sliderIndex = 0;

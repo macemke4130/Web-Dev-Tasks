@@ -15,6 +15,16 @@ body {
     align-items: center;
 }
 
+#preload-slider-images {
+    width: 0;
+    height: 0;
+}
+
+#preload-slider-images img {
+    width: 0;
+    height: 0;
+}
+
 main {
     width: 85%;
 }
@@ -45,11 +55,17 @@ h1 {
     text-align: center;
 }
 
+#image-slider-container {
+    display: flex;
+    justify-content: center;
+}
+
 #image-slider {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
+    width: fit-content;
 }
 
 #slider-title {
@@ -62,6 +78,16 @@ h1 {
     text-shadow: 0.1rem 0.1rem 0.1rem white, -0.01rem -0.01rem 0.1rem white;
 }
 
+#slider-button {
+    position: absolute;
+    padding: 0.5rem 1rem;
+    background-color: red;
+    border: 1px solid black;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+}
+
 #image-slider img {
     width: 100%;
 }
@@ -71,6 +97,7 @@ h1 {
     justify-content: center;
     align-items: center;
     background-color: #212121;
+    width: 100%;
     height: 3rem;
 }
 
@@ -137,6 +164,10 @@ h1 {
 
     #logo-banner img {
         width: 8rem;
+    }
+
+    #slider-button {
+        display: none;
     }
 
     #countdown-output {
