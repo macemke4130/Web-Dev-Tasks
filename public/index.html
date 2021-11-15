@@ -28,12 +28,10 @@
         <div id="image-slider-container">
             <div id="image-slider">
                 <a id="slider-link">
-                    <img id="slider-image" src="./images/Cycling_Slider.jpg" />
+                    <img id="slider-image" />
                     <p id="slider-title"></p>
                     <div id="slider-button"></div>
-                    <div id="dot-container">
-                        
-                    </div>
+                    <div id="dot-container"></div>
                 </a>
             </div>
         </div>
@@ -74,6 +72,41 @@
                     </div>
                 </a>
             </div>
+        </section>
+        <section id="co2">
+            <h2>Co2 Commuter Calculator</h2>
+            <form id="co2-form">
+                    <label for="miles-input">One Way Commute in Miles: </label>
+                    <input id="miles-input" type="number" />
+                <button id="co2-button">Calculate</button>
+                <p id="co2-title">Pounds of Co2 Per Year</p>
+                <div id="co2-outputs">
+                    <div>
+                        <p class="co2-label">Pedal Bicycle</p>
+                        <p id="pedal-bike-output" class="big-number"></p>
+                        <p id="pedal-bike-time"></p>
+                        
+                    </div>
+                    <div>
+                        <p class="co2-label">Electric Bicycle</p>
+                        <p id="electric-bike-output" class="big-number"></p>
+                        <p id="electric-bike-time"></p>
+                        
+                    </div>
+                    <div>
+                        <p class="co2-label">Electric Car</p>
+                        <p id="electric-car-output" class="big-number"></p>
+                        <p id="electric-car-time"></p>
+                        
+                    </div>
+                    <div>
+                        <p class="co2-label">Gasoline Car</p>
+                        <p id="gasoline-car-output" class="big-number"></p>
+                        <p id="gasoline-car-time"></p>
+                        
+                    </div>
+                </div>
+            </form>
         </section>
     </main>
 

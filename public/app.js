@@ -44,6 +44,7 @@ const countdown = setInterval(() => {
 const imageGallery = [
     {
         title: "Cycling<br>Deals",
+        alt: "Cyclist on road with field in background",
         src: "Cycling_Slider.jpg",
         link: "https://www.eriksbikeshop.com/cycling/bicycles",
         target: "_self",
@@ -52,14 +53,16 @@ const imageGallery = [
     },
     {
         title: "Ski Deals",
+        alt: "Skier decending down hill while turning",
         src: "Ski_Slider.jpg",
         link: "https://www.eriksbikeshop.com/winter/ski",
-        target: "_self",
+        target: "_blank",
         titlePosition: "BL",
         buttonPosiiton: "BL"
     },
     {
         title: "Snowboard Deals",
+        alt: "Snowboarder descending down hill while turning",
         src: "Snowboard_Slider.jpg",
         link: "https://www.eriksbikeshop.com/winter/snowboard",
         target: "_self",
@@ -94,14 +97,16 @@ const slider = () => {
         sliderGateOpen = false;
     }
 
-    // Sets Image --
+    // Sets Image with alt text --
     sliderImage.src = sliderImagePrefix + imageGallery[sliderIndex].src;
+    sliderImage.alt = imageGallery[sliderIndex].alt;
 
     // Sets Title --
     sliderTitle.innerHTML = imageGallery[sliderIndex].title;
 
-    // Sets Link --
+    // Sets Link and Target --
     sliderLink.href = imageGallery[sliderIndex].link;
+    sliderLink.target = imageGallery[sliderIndex].target;
 
     // Sets the title's position --
     switch (imageGallery[sliderIndex].titlePosition) {
@@ -199,3 +204,67 @@ const sliderTimer = setInterval(() => {
     slider();
 }, sliderSeconds * 1000);
 slider();
+
+const co2Form = document.getElementById("co2-form");
+const milesInput = document.getElementById("miles-input");
+const co2Button = document.getElementById("co2-button");
+const pedalBikeOutput = document.getElementById("pedal-bike-output");
+const electricBikeOutput = document.getElementById("electric-bike-output");
+const electricCarOutput = document.getElementById("electric-car-output");
+const gasolineCarOutput = document.getElementById("gasoline-car-output");
+const pedalBiketime = document.getElementById("pedal-bike-time");
+const electricBiketime = document.getElementById("electric-bike-time");
+const electricCartime = document.getElementById("electric-car-time");
+const gasolineCartime = document.getElementById("gasoline-car-time");
+const timeTitle = " minute trip";
+
+const calculateCo2 = (event) => {
+    // Prevents page refresh on form submit --
+    event.preventDefault();
+
+    const oneWayCommute = Number(milesInput.value);
+
+    // Grams of Co2 per mile --
+    const pedalBikePerMile = 0;
+    const electricBikePerMile = 3.75;
+    const electricCarPerMile = 200;
+    const gasolineCarPerMile = 404;
+
+    // Average speed of vehicles in MPH --
+    const pedalBikeSpeed = 10;
+    const electricBikeSpeed = 20;
+    const electricCarSpeed = 50;
+    const gasolineCarSpeed = 50;
+
+    const workDaysInAYear = 261;
+    const gramsToPoundsConversion = 454;
+    const milesToMinutesConversion = 60;
+
+    const twoWayCommute = oneWayCommute * 2;
+    const milesCommutedInYear = twoWayCommute * workDaysInAYear;
+
+    const pedalBikeCo2 = (milesCommutedInYear * pedalBikePerMile / gramsToPoundsConversion).toFixed(2);
+    const electricBikeCo2 = (milesCommutedInYear * electricBikePerMile / gramsToPoundsConversion).toFixed(2);
+    const electricCarCo2 = (milesCommutedInYear * electricCarPerMile / gramsToPoundsConversion).toFixed(2);
+    const gasolineCarCo2 = (milesCommutedInYear * gasolineCarPerMile / gramsToPoundsConversion).toFixed(2);
+
+    pedalBikeOutput.innerHTML = pedalBikeCo2;
+    electricBikeOutput.innerHTML = electricBikeCo2;
+    electricCarOutput.innerHTML = electricCarCo2;
+    gasolineCarOutput.innerHTML = gasolineCarCo2;
+
+    pedalBiketime.innerHTML = oneWayCommute / pedalBikeSpeed * milesToMinutesConversion + timeTitle;
+    electricBiketime.innerHTML  = oneWayCommute / electricBikeSpeed * milesToMinutesConversion + timeTitle;
+    electricCartime.innerHTML  = oneWayCommute / electricCarSpeed * milesToMinutesConversion + timeTitle;
+    gasolineCartime.innerHTML  = oneWayCommute / gasolineCarSpeed * milesToMinutesConversion + timeTitle;
+
+}
+
+co2Form.onsubmit = calculateCo2;
+co2Button.onclick = calculateCo2;
+
+// Co2 Sources:
+// https://ebikeshq.com/electric-bikes-environment-carbon-footprint-energy-battery-disposal/
+// https://www.cnbc.com/2021/07/26/lifetime-emissions-of-evs-are-lower-than-gasoline-cars-experts-say.html
+// https://blog.arcadia.com/biking-to-work-does-it-really-make-a-difference/
+
