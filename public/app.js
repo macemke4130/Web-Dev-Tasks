@@ -223,6 +223,16 @@ const calculateCo2 = (event) => {
     event.preventDefault();
 
     const oneWayCommute = Number(milesInput.value);
+    
+    // Quick and dirty form validation --
+    if (oneWayCommute <= 0) {
+        milesInput.style.border = "3px solid red";
+        milesInput.value = "";
+        milesInput.focus();
+        return;
+    } else {
+        milesInput.style.border = "none";
+    }
 
     // Grams of Co2 per mile --
     const pedalBikePerMile = 0;
@@ -238,25 +248,25 @@ const calculateCo2 = (event) => {
 
     const workDaysInAYear = 261;
     const gramsToPoundsConversion = 454;
-    const milesToMinutesConversion = 60;
+    const hoursToMinutesConversion = 60;
 
     const twoWayCommute = oneWayCommute * 2;
     const milesCommutedInYear = twoWayCommute * workDaysInAYear;
 
-    const pedalBikeCo2 = (milesCommutedInYear * pedalBikePerMile / gramsToPoundsConversion).toFixed(2);
-    const electricBikeCo2 = (milesCommutedInYear * electricBikePerMile / gramsToPoundsConversion).toFixed(2);
-    const electricCarCo2 = (milesCommutedInYear * electricCarPerMile / gramsToPoundsConversion).toFixed(2);
-    const gasolineCarCo2 = (milesCommutedInYear * gasolineCarPerMile / gramsToPoundsConversion).toFixed(2);
+    const pedalBikeCo2 = (milesCommutedInYear * pedalBikePerMile / gramsToPoundsConversion).toFixed(0);
+    const electricBikeCo2 = (milesCommutedInYear * electricBikePerMile / gramsToPoundsConversion).toFixed(0);
+    const electricCarCo2 = (milesCommutedInYear * electricCarPerMile / gramsToPoundsConversion).toFixed(0);
+    const gasolineCarCo2 = (milesCommutedInYear * gasolineCarPerMile / gramsToPoundsConversion).toFixed(0);
 
-    pedalBikeOutput.innerHTML = pedalBikeCo2;
-    electricBikeOutput.innerHTML = electricBikeCo2;
-    electricCarOutput.innerHTML = electricCarCo2;
-    gasolineCarOutput.innerHTML = gasolineCarCo2;
+    pedalBikeOutput.innerHTML = Number(pedalBikeCo2).toLocaleString();
+    electricBikeOutput.innerHTML = Number(electricBikeCo2).toLocaleString();
+    electricCarOutput.innerHTML = Number(electricCarCo2).toLocaleString();
+    gasolineCarOutput.innerHTML = Number(gasolineCarCo2).toLocaleString();
 
-    pedalBiketime.innerHTML = (oneWayCommute / pedalBikeSpeed * milesToMinutesConversion).toFixed(0) + timeTitle;
-    electricBiketime.innerHTML  = (oneWayCommute / electricBikeSpeed * milesToMinutesConversion).toFixed(0) + timeTitle;
-    electricCartime.innerHTML  = (oneWayCommute / electricCarSpeed * milesToMinutesConversion).toFixed(0) + timeTitle;
-    gasolineCartime.innerHTML  = (oneWayCommute / gasolineCarSpeed * milesToMinutesConversion).toFixed(0) + timeTitle;
+    pedalBiketime.innerHTML = (oneWayCommute / pedalBikeSpeed * hoursToMinutesConversion).toFixed(0) + timeTitle;
+    electricBiketime.innerHTML  = (oneWayCommute / electricBikeSpeed * hoursToMinutesConversion).toFixed(0) + timeTitle;
+    electricCartime.innerHTML  = (oneWayCommute / electricCarSpeed * hoursToMinutesConversion).toFixed(0) + timeTitle;
+    gasolineCartime.innerHTML  = (oneWayCommute / gasolineCarSpeed * hoursToMinutesConversion).toFixed(0) + timeTitle;
 
 }
 
