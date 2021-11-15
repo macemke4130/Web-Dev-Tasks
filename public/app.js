@@ -5,7 +5,6 @@ const cdNode = document.getElementById("countdown-output");
 
 const countdown = setInterval(() => {
     const targetDateTime = timeUntil('2021-11-29T23:59:59');
-    // const targetDateTime = timeUntil('2021-11-16T15:09:00');
 
     // targetDateTime.done is true when the Target DateTime has passed --
     if (targetDateTime.done) {
@@ -15,8 +14,6 @@ const countdown = setInterval(() => {
         // Updates text to show the offer has expired --
         cdNode.innerHTML = "This offer has unfortunately expired"
     } else {
-        // Set Countdown Timer text --
-
         // Individual time variables --
         const days = targetDateTime.days % 365;
         const hours = targetDateTime.hours % 24;
@@ -27,6 +24,7 @@ const countdown = setInterval(() => {
         const hourPlural = (hours === 1) ? "" : "s";
         const minutePlural = (minutes === 1) ? "" : "s";
 
+        // Set Countdown Timer text --
         cdNode.innerHTML = `These deals end in: 
         ${days} Day${dayPlural}, 
         ${hours} Hour${hourPlural} and 
@@ -82,7 +80,7 @@ const sliderImagePrefix = "./images/";
 let sliderIndex = 0;
 
 const slider = () => {
-    // Prevents function from neddless logic. Runs once on page load --
+    // Prevents function from needless logic. Runs once on page load --
     if (sliderGateOpen) {
         // Prevents the "shop now" button from jumping around before loading --
         sliderButton.style.display = "block";
@@ -223,7 +221,7 @@ const calculateCo2 = (event) => {
     event.preventDefault();
 
     const oneWayCommute = Number(milesInput.value);
-    
+
     // Quick and dirty form validation --
     if (oneWayCommute <= 0) {
         milesInput.style.border = "3px solid red";
@@ -253,20 +251,23 @@ const calculateCo2 = (event) => {
     const twoWayCommute = oneWayCommute * 2;
     const milesCommutedInYear = twoWayCommute * workDaysInAYear;
 
+    // Calculate Co2 for each vehicle --
     const pedalBikeCo2 = (milesCommutedInYear * pedalBikePerMile / gramsToPoundsConversion).toFixed(0);
     const electricBikeCo2 = (milesCommutedInYear * electricBikePerMile / gramsToPoundsConversion).toFixed(0);
     const electricCarCo2 = (milesCommutedInYear * electricCarPerMile / gramsToPoundsConversion).toFixed(0);
     const gasolineCarCo2 = (milesCommutedInYear * gasolineCarPerMile / gramsToPoundsConversion).toFixed(0);
 
+    // toLocaleString() outputs commas when numbers reach the thousands --
     pedalBikeOutput.innerHTML = Number(pedalBikeCo2).toLocaleString();
     electricBikeOutput.innerHTML = Number(electricBikeCo2).toLocaleString();
     electricCarOutput.innerHTML = Number(electricCarCo2).toLocaleString();
     gasolineCarOutput.innerHTML = Number(gasolineCarCo2).toLocaleString();
 
+    // Calculate average trip time --
     pedalBiketime.innerHTML = (oneWayCommute / pedalBikeSpeed * hoursToMinutesConversion).toFixed(0) + timeTitle;
-    electricBiketime.innerHTML  = (oneWayCommute / electricBikeSpeed * hoursToMinutesConversion).toFixed(0) + timeTitle;
-    electricCartime.innerHTML  = (oneWayCommute / electricCarSpeed * hoursToMinutesConversion).toFixed(0) + timeTitle;
-    gasolineCartime.innerHTML  = (oneWayCommute / gasolineCarSpeed * hoursToMinutesConversion).toFixed(0) + timeTitle;
+    electricBiketime.innerHTML = (oneWayCommute / electricBikeSpeed * hoursToMinutesConversion).toFixed(0) + timeTitle;
+    electricCartime.innerHTML = (oneWayCommute / electricCarSpeed * hoursToMinutesConversion).toFixed(0) + timeTitle;
+    gasolineCartime.innerHTML = (oneWayCommute / gasolineCarSpeed * hoursToMinutesConversion).toFixed(0) + timeTitle;
 
 }
 
