@@ -253,10 +253,10 @@ const calculateCo2 = (event) => {
     electricCarOutput.innerHTML = electricCarCo2;
     gasolineCarOutput.innerHTML = gasolineCarCo2;
 
-    pedalBiketime.innerHTML = oneWayCommute / pedalBikeSpeed * milesToMinutesConversion + timeTitle;
-    electricBiketime.innerHTML  = oneWayCommute / electricBikeSpeed * milesToMinutesConversion + timeTitle;
-    electricCartime.innerHTML  = oneWayCommute / electricCarSpeed * milesToMinutesConversion + timeTitle;
-    gasolineCartime.innerHTML  = oneWayCommute / gasolineCarSpeed * milesToMinutesConversion + timeTitle;
+    pedalBiketime.innerHTML = (oneWayCommute / pedalBikeSpeed * milesToMinutesConversion).toFixed(0) + timeTitle;
+    electricBiketime.innerHTML  = (oneWayCommute / electricBikeSpeed * milesToMinutesConversion).toFixed(0) + timeTitle;
+    electricCartime.innerHTML  = (oneWayCommute / electricCarSpeed * milesToMinutesConversion).toFixed(0) + timeTitle;
+    gasolineCartime.innerHTML  = (oneWayCommute / gasolineCarSpeed * milesToMinutesConversion).toFixed(0) + timeTitle;
 
 }
 
@@ -267,4 +267,3 @@ co2Button.onclick = calculateCo2;
 // https://ebikeshq.com/electric-bikes-environment-carbon-footprint-energy-battery-disposal/
 // https://www.cnbc.com/2021/07/26/lifetime-emissions-of-evs-are-lower-than-gasoline-cars-experts-say.html
 // https://blog.arcadia.com/biking-to-work-does-it-really-make-a-difference/
-
