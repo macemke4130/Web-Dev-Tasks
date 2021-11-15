@@ -73,6 +73,7 @@ h1 {
 #tri-column {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
     column-gap: 0.5rem;
     margin-top: 1rem;
 }
@@ -81,19 +82,37 @@ h1 {
     position: relative;
 }
 
-#tri-column div div {
+/* Text inside tri-column */
+#tri-column div p {
     position: absolute;
     height: 0;
     top: 1rem;
     left: 1rem;
     font-size: 1.25rem;
     color: white;
-    text-shadow: 0.1rem 0.1rem 0 black;
+    text-shadow: 0.1rem 0.1rem 0.1rem black, -0.01rem -0.01rem 0.1rem black;
+    text-transform: uppercase;
 }
 
 #tri-column div img {
     width: 100%;
     object-fit: cover;
+    object-position: center;
+}
+
+.red-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 100%;
+    height: 2.5rem;
+    background-color: red;
+}
+
+#tri-column a {
+    text-decoration: none;
+    color: white;
 }
 
 @media only screen and (max-width: 780px) {
@@ -111,5 +130,27 @@ h1 {
 
     #countdown-output {
         font-size: 1.25rem;
+    }
+
+    #tri-column {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    #tri-column div img {
+        height: 25vh;
+        object-position: top;
+    }
+
+    #tri-column div p {
+        text-align: center;
+        left: 50%;
+        top: unset;
+        bottom: 3.5rem;
+        transform: translate(-50%, -50%);
+    }
+
+    .red-action {
+        display: none;
     }
 }
