@@ -9,10 +9,21 @@ html {
     font-size: 16px; /* REM unit */
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main {
+    width: 80%;
+}
+
 header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 #logo-banner {
@@ -31,10 +42,74 @@ h1 {
     font-family: 'Archivo Black', sans-serif;
     font-size: 2.5rem;
     text-transform: uppercase;
+    text-align: center;
 }
 
-@media only screen and (max-width: 400px) {
+#img-slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#img-slider img {
+    width: 100%;
+}
+
+#countdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #212121;
+    height: 3rem;
+}
+
+#countdown-output {
+    color: white;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#tri-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+#tri-column div {
+    position: relative;
+}
+
+#tri-column div div {
+    position: absolute;
+    height: 0;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1.25rem;
+    color: white;
+    text-shadow: 0.1rem 0.1rem 0 black;
+}
+
+#tri-column div img {
+    width: 100%;
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 780px) {
+    main {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
     #logo-banner img {
         width: 8rem;
+    }
+
+    #countdown-output {
+        font-size: 1.25rem;
     }
 }

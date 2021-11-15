@@ -1,7 +1,7 @@
 console.log("Created by Lucas Mace");
 import { timeUntil } from './countdown.js';
 
-const cdNode = document.getElementById("countdown");
+const cdNode = document.getElementById("countdown-output");
 
 const countdown = setInterval(() => {
     const targetDateTime = timeUntil('2021-11-29T23:59:59');
