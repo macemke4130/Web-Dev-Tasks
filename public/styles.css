@@ -58,6 +58,7 @@ h1 {
 #image-slider-container {
     display: flex;
     justify-content: center;
+    z-index: 0;
 }
 
 #image-slider {
@@ -72,6 +73,7 @@ h1 {
     position: absolute;
     height: 0;
     text-transform: uppercase;
+    text-align: left;
     color: black;
     font-size: 2rem;
     font-weight: bold;
@@ -79,10 +81,12 @@ h1 {
 }
 
 #slider-button {
+    display: none;
     position: absolute;
     padding: 0.5rem 1rem;
     background-color: red;
     border: 1px solid black;
+    font-size: 1rem;
     text-decoration: none;
     text-transform: uppercase;
     color: white;
@@ -90,6 +94,23 @@ h1 {
 
 #image-slider img {
     width: 100%;
+}
+
+#dot-container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0.5rem;
+    width: 100%;
+}
+
+.slider-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 100%;
+    background-color: white;
+    border: 1px solid black;
+    margin: 0 1rem;
 }
 
 #countdown-container {
@@ -167,7 +188,7 @@ h1 {
     }
 
     #slider-button {
-        display: none;
+        font-size: 0.8rem;
     }
 
     #countdown-output {
